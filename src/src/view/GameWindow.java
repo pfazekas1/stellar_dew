@@ -1,12 +1,19 @@
 package view;
 
-import java.io.IOException;
+import model.GameBoard;
 
-public class GameWindow {
+import javax.swing.JFrame;
 
-    public GameWindow() throws IOException{}
+public class GameWindow extends JFrame {
+    private final GameBoard gameBoard = new GameBoard();
 
-    public static void main(String args[]){
+    public GameWindow() {
+        setTitle("Stellar Dew Valley");
+        setSize(1600, 800);
+        setVisible(true);setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
 
+    public static void main(String[] args){
+        GameWindow window = new GameWindow();
     }
 }
