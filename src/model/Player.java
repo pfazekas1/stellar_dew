@@ -2,6 +2,8 @@ package model;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.HashSet;
+import java.util.Objects;
 
 public class Player {
     private final int movementSpeed = 10;
@@ -10,8 +12,11 @@ public class Player {
     private final int modelHeight = 200, modelWidth = 300;
     private Rectangle hitbox;
 
-    // TODO: Inventory. Best way of doing this would be with tuples imo, but that needs some package not included in the current java version. Will do later.
-    //
+    private static class Item{
+        String itemName;
+        int itemCount;
+    }
+    private HashSet<Item> inventory = new HashSet<>();
 
     public Player(int x, int y){
         pos = new Point(x, y);
@@ -43,6 +48,22 @@ public class Player {
 
     public Point getPos() {
         return pos;
+    }
+
+    public void addElementToInventory(String itemName, int itemCount){
+        Item item = new Item();
+        item.itemName = itemName;
+        item.itemCount = itemCount;
+        inventory.add(item);
+    }
+
+    public void removeFromInventory(String itemName){
+        inventory.removeIf(item -> Objects.equals(item.itemName, itemName));
+    }
+
+    public void changeValue(String itemName, int itemCount){
+        removeFromInventory(itemName);
+        addElementToInventory(itemName, itemCount);
     }
 
     public void setPos(Point pos) {
