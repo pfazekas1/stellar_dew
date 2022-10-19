@@ -15,5 +15,13 @@ public class GameWindow extends JFrame {
 
     public static void main(String[] args){
         GameWindow window = new GameWindow();
+
+        JFrame myFrame = new JFrame(() -> {
+            setTitle("Valley of Stellar Dew");
+            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            setResizable(false);
+            pack();
+            setLocationRelativeTo(null);
+        })
     }
 }
