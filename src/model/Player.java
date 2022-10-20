@@ -3,6 +3,7 @@ package model;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Player {
@@ -57,10 +58,38 @@ public class Player {
         inventory.add(item);
     }
 
+    public boolean isElementInInventory(String itemName){
+        for (Item item : inventory) {
+            if (item.itemName.equals(itemName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Method returns the number of a specified item in the inventory.
+     * @param itemName Type of item you are looking for
+     * @return Number of item present in inventory. -1 if there is no such item.
+     */
+    public int getElementCount(String itemName){
+        for (Item item : inventory) {
+            if (item.itemName.equals(itemName)) {
+                return item.itemCount;
+            }
+        }
+        return -1;
+    }
+
     public void removeFromInventory(String itemName){
         inventory.removeIf(item -> Objects.equals(item.itemName, itemName));
     }
 
+    /**
+     * Here you can change how much of a specific item do you have in the inventory
+     * @param itemName Type of item you want to change
+     * @param itemCount How much you have in the inventory
+     */
     public void changeValue(String itemName, int itemCount){
         removeFromInventory(itemName);
         addElementToInventory(itemName, itemCount);
