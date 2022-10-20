@@ -2,9 +2,10 @@ package model;
 
 public class BlueTree extends Plant{
 
-    boolean diesAfterFirstHarvest;
-    int numberOfProducingYield;
-    boolean isDead;
+    private boolean diesAfterFirstHarvest;
+    private int numberOfProducingYield;
+    private boolean isDead;
+    private int daysToRipe = 7;
 
     public BlueTree(int x, int y, String type) {
         super(x, y, type);
@@ -12,6 +13,17 @@ public class BlueTree extends Plant{
         this.diesAfterFirstHarvest = setDiesAfterFirstHarvest(type);
         this.isDead = false;
 
+    }
+    public int getDaysToRipe() {
+        return daysToRipe;
+    }
+
+    public void setDaysToRipe(int daysToRipe) {
+        this.daysToRipe = daysToRipe;
+    }
+
+    public int getNumberOfProducingYield() {
+        return numberOfProducingYield;
     }
 
 
