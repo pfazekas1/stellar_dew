@@ -1,19 +1,28 @@
 package view;
 
+import constants.Constants;
 import model.GameBoard;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
-public class GameWindow extends JFrame {
-    private final GameBoard gameBoard = new GameBoard(50, 25);
+public class GameWindow extends JFrame{
+    private final GameBoard gameBoard = new GameBoard();
+    private final Menu menu = new Menu();
 
     public GameWindow() {
-        setTitle("Stellar Dew Valley");
-        setSize(1600, 800); //50 * 25 cells, because each cell is 32 * 32.
+        setTitle("Valley of Stellar Dew");
+        setSize(Constants.GAME_WIDTH, Constants.GAME_HEIGHT);
         setVisible(true);setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().add(menu, BorderLayout.CENTER);
+        //pack();
+        setLocationRelativeTo(null);
     }
 
+
+
     public static void main(String[] args){
-        GameWindow window = new GameWindow();
+        SwingUtilities.invokeLater(() -> new GameWindow().setVisible(true));
     }
 }
