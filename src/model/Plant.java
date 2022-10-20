@@ -1,16 +1,14 @@
 package model;
 
+import static java.lang.Math.round;
+
 public abstract class Plant {
 
-    int xCoord;
-    int yCoord;
-    String typeOfPlant;
-    boolean diesAfterFirstHarvest;
-    boolean isDead;
-
-    //const fileba
-    private int daysToRipe =  3;
-    private int numberOfProducingYield =  5;
+    protected int xCoord;
+    protected int yCoord;
+    protected String typeOfPlant;
+    protected boolean diesAfterFirstHarvest;
+    protected boolean isDead;
 
     public Plant(int x, int y, String type){
         setCoords(x,y);
@@ -19,8 +17,6 @@ public abstract class Plant {
     }
 
     public void setCoords(int x,int y){
-        //xCoords.add(x);
-        //yCoords.add(y);
         this.xCoord = x;
         this.yCoord = y;
 
@@ -30,9 +26,10 @@ public abstract class Plant {
         if(type.equals("Blue")){
             return false;
         }
+        if(type.equals("Red")){
+            return false;
+        }
         //more will be here
-
-
         return true;
 
     }
@@ -41,30 +38,33 @@ public abstract class Plant {
         if(type.equals("Blue")){
             return 5;
         }
+        if(type.equals("Red")){
+            return 2;
+        }
         //more will be here
-
         return 0;
 
+    }
+
+    //extra idea: maybe we could record that the plant was watered for certain days, if yes we could add more boost to the growing
+    public int daysToRipe(int baseNumber, boolean groundIsFertilized){
+        //fertilizer is 0.7x
+        if(groundIsFertilized){
+            return (int)round(baseNumber*0.7);
+        }
+        return baseNumber;
     }
 
     public boolean getIsDead(){
         return isDead;
     }
 
+    public boolean isDiesAfterFirstHarvest() {
+        return diesAfterFirstHarvest;
+    }
 
     public void setDead(boolean dead) {
         isDead = dead;
     }
 
-    public int getDaysToRipe() {
-        return daysToRipe;
-    }
-
-    public void setDaysToRipe(int daysToRipe) {
-        this.daysToRipe = daysToRipe;
-    }
-
-    public int getNumberOfProducingYield() {
-        return numberOfProducingYield;
-    }
 }
