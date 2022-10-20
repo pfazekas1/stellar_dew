@@ -1,12 +1,19 @@
 package model;
 
+import model.terrain.Cell;
+
 public class GameBoard {
+    Cell [][] board;
     private int width, height;
     private Player player;
 
-    public GameBoard(){
-        loadGame();
+    public GameBoard(int width, int height){
+        this.width = width;
+        this.height = height;
+        board = new Cell[width][height];
+        
         initGame();
+        loadGame();
     }
 
     /**
