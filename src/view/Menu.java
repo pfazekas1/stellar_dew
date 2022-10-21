@@ -24,9 +24,7 @@ public class Menu extends JPanel {
     }
 
     public void drawStartScreen(Graphics2D g2d){
-        g2d.setFont(Constants.MAIN_FONT);
-        g2d.setColor(Constants.TEXT_COLOR);
-        g2d.drawString("Valley of Stellar Dew", Constants.TITLE_POS_X, Constants.TITLE_POS_Y);
+        //graphic elements of the start screen will be drawn here
     }
 
 
