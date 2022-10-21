@@ -1,11 +1,18 @@
 package model;
 
+import java.awt.Graphics2D;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import model.terrain.Cell;
+import model.terrain.Grass;
 
 public class GameBoard {
     Cell [][] board;
     private int width, height;
     private Player player;
+    private final String filename = "img/test_map.csv";
 
     public GameBoard(int width, int height){
         this.width = width;
@@ -13,7 +20,7 @@ public class GameBoard {
         board = new Cell[width][height];
         
         initGame();
-        loadGame();
+        loadGame(filename);
     }
 
     /**
@@ -26,11 +33,46 @@ public class GameBoard {
     /**
      * This method loads predefined data into the game. ex.: Game map
      */
-    private void loadGame(){
+    private void loadGame(String filename){
+        BufferedReader reader = null;
+        String line = "";
+        int x = 0;
+        int y = 0;
+
+        try {
+            reader = new BufferedReader(new FileReader(filename));
+            while((line = reader.readLine()) != null){
+                String[] row = line.split(",");
+
+                Cell element = new Cell(null, y, y);
+                for(String index : row){
+                    if(index.equals('9')){
+                        element = new Cell(new Grass(), width, height);
+                    }
+                    board[x][y] = element;
+                    y++;
+                }
+                x++;
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
     public int getWidth() { return  width; }
 
     public int getHeight() { return  height; }
+
+    public void draw(Graphics2D g2, int i, int k, int tileSize) {
+    }
+
 }
