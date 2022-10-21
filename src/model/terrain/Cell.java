@@ -7,17 +7,30 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class Cell{
     private boolean fertilized = false; //TODO: make it overwriteable
     private GroundType type;
     private int x;
     private int y;
+    private BufferedImage grass;
 
     public Cell(GroundType type, int x, int y) {
         this.type = type;
         this.x = x;
         this.y = y;
+        setImage();
+    }
+
+    private void setImage() {
+
+        try {
+            grass = ImageIO.read(new File("img/grass.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     public int returnX() { return x; }
@@ -27,7 +40,8 @@ public class Cell{
         BufferedImage image = null;
         type.draw(g2, i, k, tileSize);
 
-        g2.drawImage(image, i * tileSize, k * tileSize, tileSize, tileSize, null);
+        //image = grass;
+        //g2.drawImage(image, i * tileSize, k * tileSize, tileSize, tileSize, null);
     }
     
 }

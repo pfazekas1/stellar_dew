@@ -1,5 +1,6 @@
 package model.terrain;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
@@ -7,12 +8,13 @@ import java.awt.image.BufferedImage;
 public class Grass extends GroundType {
 
     public Grass(){
+        super();
         getFieldImage();
     }
 
     private void getFieldImage() {
         try {
-            grass = setImage("img/grass.png");
+            grass = setImage("grass.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,7 +25,8 @@ public class Grass extends GroundType {
         BufferedImage image = null;
         image = grass;
         g2.drawImage(image, i*tileSize, k*tileSize, tileSize, tileSize, null); 
-        
+        g2.setColor(Color.black);
+		g2.drawLine(0,100,90,100);
     }
     
 }

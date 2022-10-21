@@ -21,8 +21,8 @@ public class DrawArea extends JPanel {
         Graphics2D g2 = (Graphics2D) grphcs;
 
         for(int i = 0; i<30; i++){
-            for(int k = 0; i<30; k++){
-               board.draw(g2, i, k, tileSize); 
+            for(int k = 0; k<30; k++){
+               board.getBoard()[i][k].draw(g2, i, k, tileSize); 
             }
         }
         
