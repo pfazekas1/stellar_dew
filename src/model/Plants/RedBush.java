@@ -1,4 +1,4 @@
-package model;
+package model.Plants;
 
 public class RedBush extends Plant{
 

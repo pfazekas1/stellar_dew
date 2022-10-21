@@ -1,4 +1,4 @@
-package model;
+package model.Plants;
 
 import static java.lang.Math.round;
 
