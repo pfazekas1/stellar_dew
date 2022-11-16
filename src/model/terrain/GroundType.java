@@ -7,12 +7,11 @@ import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 
 public abstract class GroundType {
-    private String type;
-    private String fileName;
+    protected String type;
+    protected String fileName;
     private final String imagePath = "img/";
-    BufferedImage grass, road, trunk, white_flower, pink_flower;
+    BufferedImage grass, road, trunk, white_flower, pink_flower, field, tree;
     
-
     public BufferedImage setImage(String path) throws IOException {
         return ImageIO.read(new File(imagePath + path));
     }
