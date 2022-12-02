@@ -1,0 +1,2 @@
+#We ignore all file with .bin extension
+*.bin
