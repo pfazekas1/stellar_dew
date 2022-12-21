@@ -10,7 +10,7 @@ public abstract class GroundType {
     protected String type;
     protected String fileName;
     private final String imagePath = "img/";
-    BufferedImage grass, road, trunk, white_flower, pink_flower, field, tree;
+    BufferedImage grass, road, trunk, white_flower, pink_flower, field, tree, building;
     
     public BufferedImage setImage(String path) throws IOException {
         return ImageIO.read(new File(imagePath + path));
