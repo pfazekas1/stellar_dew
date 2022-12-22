@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
+      env:
+        VAR: ${{ docker ps -l }}
       run: docker build . --file Docker --tag pfazekas1/valley_of_stellar_dew:test
+            docker commit $VAR pfazekas1/valley_of_stellar_dew:test
+            docker push pfazekas1/valley_of_stellar_dew:test
