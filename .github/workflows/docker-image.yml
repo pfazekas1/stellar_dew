@@ -18,5 +18,5 @@ jobs:
       run: docker build . --file Docker --tag pfazekas1/valley_of_stellar_dew:test
       
     - name: Docker push
-      run: docker commit (docker ps -l -q) pfazekas1/valley_of_stellar_dew:test
+      run: docker commit $(docker ps -l -q) pfazekas1/valley_of_stellar_dew:test
            docker push pfazekas1/valley_of_stellar_dew:test
