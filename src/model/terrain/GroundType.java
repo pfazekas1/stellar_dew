@@ -11,6 +11,7 @@ public abstract class GroundType {
     protected String fileName;
     private final String imagePath = "img/";
     BufferedImage grass, road, trunk, white_flower, pink_flower, field, tree, building;
+    protected BufferedImage player;
     
     public BufferedImage setImage(String path) throws IOException {
         return ImageIO.read(new File(imagePath + path));

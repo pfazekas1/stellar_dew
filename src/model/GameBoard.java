@@ -42,7 +42,8 @@ public class GameBoard {
         String line = "";
         int x = 0;
         int y = 0;
-
+        player = new Player(15, 15);
+        
         try {
             reader = new BufferedReader(new FileReader(filename));
             while((line = reader.readLine()) != null){
@@ -51,6 +52,7 @@ public class GameBoard {
                 
                 for(String index : row){
                     int num = Integer.parseInt(index);
+                    
                     if(index.equals("16")){
                         Cell element = new Cell(new Grass(num), x, y);
                         board[y][x] = element;
