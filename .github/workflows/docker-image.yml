@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Docker --tag pfazekas1/valley_of_stellar_dew:test 
+      run: docker build . --file Docker --tag pfazekas1/valley_of_stellar_dew:test || echo $(docker ps)
 
     - name: Display the path
       run: echo $(docker ps)
