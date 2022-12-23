@@ -1,12 +1,17 @@
 package model;
 
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
+import java.awt.image.BufferedImage;
 
-public class Player {
+import model.terrain.GroundType;
+
+public class Player extends GroundType{
     private final int movementSpeed = 10;
     private int money, water;
     private Point pos;
@@ -20,6 +25,8 @@ public class Player {
     private HashSet<Item> inventory = new HashSet<>();
 
     public Player(int x, int y){
+        super();
+        getFieldImage();
         pos = new Point(x, y);
         this.money = 0;
         this.water = 0;
@@ -122,5 +129,23 @@ public class Player {
     public boolean collidesWithWall(){
         Rectangle r1 = new Rectangle(0, 0, 1200, 2000); //Width and height are temporary. Will change later
         return r1.contains(hitbox);
+    }
+
+    private void getFieldImage() {
+        try {
+            player = setImage("player.png");
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void draw(Graphics2D g2, int i, int k, int tileSize) {
+        BufferedImage image = null;
+        image = player;
+        g2.drawImage(image, i*tileSize, k*tileSize, tileSize, tileSize, null); 
+
+        
     }
 }
