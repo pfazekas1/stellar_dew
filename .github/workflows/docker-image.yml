@@ -20,3 +20,4 @@ jobs:
     - name: Display the path
       run: echo $(docker ps -a)
       shell: bash
+
